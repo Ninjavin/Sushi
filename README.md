@@ -41,3 +41,10 @@ Make sure you have Node.js and npm (Node Package Manager) installed on your mach
    ```
 
 2. Open your browser and visit [http://localhost:3000](http://localhost:3000) to view your Sushi app.
+
+## Acknowledgments
+
+- Thanks to the Next.js and Chakra UI communities for their amazing tools and documentation.
+- Inspired by [Bento](https://bento.me/ninjavin) for the concept and design inspiration. 
+
+Happy coding!
