@@ -45,6 +45,6 @@ Make sure you have Node.js and npm (Node Package Manager) installed on your mach
 ## Acknowledgments
 
 - Thanks to the Next.js and Chakra UI communities for their amazing tools and documentation.
-- Inspired by [Bento](https://bento.me/ninjavin) for the concept and design inspiration. 
+- Inspired by [Bento](https://bento.me) for the concept and design inspiration. 
 
 Happy coding!
