@@ -1,7 +1,35 @@
 "use client";
+import { useProfileContext } from "@/context/ProfileContext";
 import { Box, Flex, Grid, GridItem, Img, Text } from "@chakra-ui/react";
+import { useContext, useEffect } from "react";
+import axios from "axios";
 
 const TwitterLayout = () => {
+  const { profiles } = useProfileContext();
+
+  const getTwitterProfile = async (twitterUsername: string) => {
+    try {
+      const response = await axios.get(
+        `/api/getTwitterProfile?username=${twitterUsername}`
+      );
+      console.log(response);
+    } catch (err) {
+      console.error("Error fetching Twitter profile:", err);
+    }
+  };
+
+  useEffect(() => {
+    console.log("In useEffect!");
+    console.log(profiles);
+
+    if (
+      profiles?.twitterProfile != "" &&
+      profiles?.twitterProfile != undefined
+    ) {
+      getTwitterProfile(profiles.twitterProfile);
+    }
+  }, [profiles]);
+
   return (
     <Box p="5">
       <Flex

@@ -5,7 +5,7 @@ import LinksLayout from "../Links/LinksLayout";
 
 const SushiLayout = () => {
   return (
-    <Flex m={6} justifyContent="center">
+    <Flex m={6} justifyContent="center" height="95%" alignItems="center">
       <Box width="35%" p={6} mr={"4%"}>
         <ProfileLayout />
       </Box>

@@ -8,6 +8,7 @@ import MessageLayout from "../SocialMediaLinks/MessageLayout";
 import PortfolioLayout from "../SocialMediaLinks/PortfolioLayout";
 import InstagramLayout from "../SocialMediaLinks/InstagramLayout";
 import MediumLayout from "../SocialMediaLinks/MediumLayout";
+import YouTubeLayout from "../SocialMediaLinks/YouTubeLayout";
 
 const LinksLayout = () => {
   return (
@@ -16,7 +17,7 @@ const LinksLayout = () => {
         h="600px"
         templateRows="repeat(3, 1fr)"
         templateColumns="repeat(4, 1fr)"
-        gap={4}
+        gap={6}
       >
         <GridItem
           rowSpan={1}
@@ -83,6 +84,14 @@ const LinksLayout = () => {
           boxShadow={"1px 1px 3px 0px rgba(157, 178, 217, 1)"}
         >
           <MediumLayout />
+        </GridItem>
+        <GridItem
+          colSpan={1}
+          bg="#FFEFEF"
+          borderRadius={"1.5rem"}
+          boxShadow={"1px 1px 3px 0px rgba(157, 178, 217, 1)"}
+        >
+          <YouTubeLayout />
         </GridItem>
         {/* <GridItem colSpan={1} bg="black" /> */}
       </Grid>
