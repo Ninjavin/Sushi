@@ -1,11 +1,35 @@
 "use client";
 import { useProfileContext } from "@/context/ProfileContext";
-import { Box, Flex, Grid, GridItem, Img, Text } from "@chakra-ui/react";
-import { useContext, useEffect } from "react";
+import {
+  Box,
+  Flex,
+  Img,
+  LinkBox,
+  LinkOverlay,
+  Skeleton,
+  Text,
+} from "@chakra-ui/react";
+import { useState, useEffect } from "react";
 import axios from "axios";
+
+type UserData = {
+  followers_count: number;
+  screen_name: string;
+  description: string;
+  name: string;
+  url: string;
+};
 
 const TwitterLayout = () => {
   const { profiles } = useProfileContext();
+  const [userData, setUserData] = useState<UserData>({
+    followers_count: 0,
+    screen_name: "",
+    description: "",
+    name: "Twitter",
+    url: "",
+  });
+  const [loading, setLoading] = useState<boolean>(true);
 
   const getTwitterProfile = async (twitterUsername: string) => {
     try {
@@ -13,6 +37,9 @@ const TwitterLayout = () => {
         `/api/getTwitterProfile?username=${twitterUsername}`
       );
       console.log(response);
+      const userData = response.data;
+      setUserData(userData);
+      setLoading(false);
     } catch (err) {
       console.error("Error fetching Twitter profile:", err);
     }
@@ -31,45 +58,49 @@ const TwitterLayout = () => {
   }, [profiles]);
 
   return (
+    // <LinkBox>
     <Box p="5">
-      <Flex
-        justifyContent={"space-between"}
-        height={"3rem"}
-        alignItems={"center"}
-        // mt="4"
-      >
-        <Img
-          width="45px"
-          height="45px"
-          src="https://img.icons8.com/color/48/twitter--v3.png"
-          alt="twitter--v3"
-        />
+      <Skeleton isLoaded={!loading}>
         <Flex
           justifyContent={"space-between"}
+          height={"3rem"}
           alignItems={"center"}
-          bg="#55ACEE"
-          borderRadius="0.8rem"
-          p="3"
-          fontSize={"0.75rem"}
-          color={"white"}
-          height={"1.5rem"}
+          // mt="4"
         >
-          <Text mr="2" fontWeight={"500"}>
-            Follow
-          </Text>
-          <Text>330</Text>
+          <Img
+            width="45px"
+            height="45px"
+            src="https://img.icons8.com/color/48/twitter--v3.png"
+            alt="twitter--v3"
+          />
+          <Flex
+            justifyContent={"space-between"}
+            alignItems={"center"}
+            bg="#55ACEE"
+            borderRadius="0.8rem"
+            p="3"
+            fontSize={"0.75rem"}
+            color={"white"}
+            height={"1.5rem"}
+          >
+            <Text mr="2" fontWeight={"500"}>
+              Follow
+            </Text>
+            <Text>{userData.followers_count}</Text>
+          </Flex>
         </Flex>
-      </Flex>
-      <Text>Twitter</Text>
-      <Text color="blackAlpha.700" fontSize={"0.75rem"} mb="0.5rem">
-        @vineeta_vj
-      </Text>
-      <Text color="blackAlpha.700" fontSize={"0.75rem"}>
-        22yo | Engineering @Oracle | Ex- Project Intern @Oracle | Ex- swe intern
-        @theinternetfolk | I put the win in Vineeta 💫 | Engineer 💪| Writer ✍️|
-        Quizzer ✌️
-      </Text>
+        {/* <LinkOverlay href={userData.url}> */}
+        <Text>{userData.name}</Text>
+        {/* </LinkOverlay> */}
+        <Text color="blackAlpha.700" fontSize={"0.75rem"} mb="0.5rem">
+          @{userData.screen_name}
+        </Text>
+        <Text color="blackAlpha.700" fontSize={"0.75rem"}>
+          {userData.description}
+        </Text>
+      </Skeleton>
     </Box>
+    // </LinkBox>
   );
 };
 

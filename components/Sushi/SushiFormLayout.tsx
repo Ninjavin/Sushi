@@ -14,6 +14,8 @@ import { useForm } from "react-hook-form";
 type FormValues = {
   twitterProfile: string;
   instagramProfile: string;
+  linkedinProfile: string;
+  githubProfile: string;
 };
 
 type SushiFormLayoutProps = {
@@ -33,8 +35,18 @@ const SushiFormLayout = ({ setProfileSet }: SushiFormLayoutProps) => {
     console.log("inside submit handler");
     console.log(data);
 
-    if (data.twitterProfile != undefined && data.twitterProfile != "") {
-      addProfile({ twitterProfile: data.twitterProfile });
+    if (
+      data.twitterProfile != undefined &&
+      data.twitterProfile != "" &&
+      data.instagramProfile != undefined &&
+      data.instagramProfile != ""
+    ) {
+      addProfile({
+        twitterProfile: data.twitterProfile,
+        instagramProfile: data.instagramProfile,
+        linkedinProfile: data.linkedinProfile,
+        githubProfile: data.githubProfile,
+      });
     }
 
     setProfileSet(true);
@@ -64,6 +76,30 @@ const SushiFormLayout = ({ setProfileSet }: SushiFormLayoutProps) => {
           />
           <FormErrorMessage>
             {errors.instagramProfile && "Instagram profile is required"}
+          </FormErrorMessage>
+        </FormControl>
+
+        <FormControl isInvalid={!!errors.linkedinProfile} mt={4}>
+          <FormLabel htmlFor="linkedinProfile">LinkedIn Profile </FormLabel>
+          <Input
+            type="text"
+            id="linkedinProfile"
+            {...register("linkedinProfile", { required: true })}
+          />
+          <FormErrorMessage>
+            {errors.linkedinProfile && "Linkedin profile is required"}
+          </FormErrorMessage>
+        </FormControl>
+
+        <FormControl isInvalid={!!errors.githubProfile} mt={4}>
+          <FormLabel htmlFor="githubProfile">Github Profile </FormLabel>
+          <Input
+            type="text"
+            id="githubProfile"
+            {...register("githubProfile", { required: true })}
+          />
+          <FormErrorMessage>
+            {errors.githubProfile && "Linkedin profile is required"}
           </FormErrorMessage>
         </FormControl>
 

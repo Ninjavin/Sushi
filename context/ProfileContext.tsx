@@ -2,6 +2,9 @@ import { createContext, useContext, ReactNode, useState } from "react";
 
 type Profile = {
   twitterProfile: string;
+  instagramProfile: string;
+  linkedinProfile: string;
+  githubProfile: string;
 };
 
 type ProfileContextType = {
