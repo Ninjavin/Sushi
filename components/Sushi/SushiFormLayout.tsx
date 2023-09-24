@@ -16,6 +16,8 @@ type FormValues = {
   instagramProfile: string;
   linkedinProfile: string;
   githubProfile: string;
+  codeforcesProfile: string;
+  coolMessage: string;
 };
 
 type SushiFormLayoutProps = {
@@ -46,6 +48,8 @@ const SushiFormLayout = ({ setProfileSet }: SushiFormLayoutProps) => {
         instagramProfile: data.instagramProfile,
         linkedinProfile: data.linkedinProfile,
         githubProfile: data.githubProfile,
+        codeforcesProfile: data.codeforcesProfile,
+        coolMessage: data.coolMessage,
       });
     }
 
@@ -99,7 +103,31 @@ const SushiFormLayout = ({ setProfileSet }: SushiFormLayoutProps) => {
             {...register("githubProfile", { required: true })}
           />
           <FormErrorMessage>
-            {errors.githubProfile && "Linkedin profile is required"}
+            {errors.githubProfile && "Github profile is required"}
+          </FormErrorMessage>
+        </FormControl>
+
+        <FormControl isInvalid={!!errors.codeforcesProfile} mt={4}>
+          <FormLabel htmlFor="codeforcesProfile">Codeforces Profile </FormLabel>
+          <Input
+            type="text"
+            id="codeforcesProfile"
+            {...register("codeforcesProfile", { required: true })}
+          />
+          <FormErrorMessage>
+            {errors.codeforcesProfile && "Codeforces profile is required"}
+          </FormErrorMessage>
+        </FormControl>
+
+        <FormControl isInvalid={!!errors.coolMessage} mt={4}>
+          <FormLabel htmlFor="coolMessage">Cool Message</FormLabel>
+          <Input
+            type="text"
+            id="coolMessage"
+            {...register("coolMessage", { required: true })}
+          />
+          <FormErrorMessage>
+            {errors.coolMessage && "A cool message is needed!"}
           </FormErrorMessage>
         </FormControl>
 

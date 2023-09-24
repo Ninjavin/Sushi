@@ -5,6 +5,8 @@ type Profile = {
   instagramProfile: string;
   linkedinProfile: string;
   githubProfile: string;
+  codeforcesProfile: string;
+  coolMessage: string;
 };
 
 type ProfileContextType = {

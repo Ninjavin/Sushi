@@ -9,6 +9,7 @@ import PortfolioLayout from "../SocialMediaLinks/PortfolioLayout";
 import InstagramLayout from "../SocialMediaLinks/InstagramLayout";
 import MediumLayout from "../SocialMediaLinks/MediumLayout";
 import YouTubeLayout from "../SocialMediaLinks/YouTubeLayout";
+import CodeforcesLayout from "../SocialMediaLinks/CodeforcesLayout";
 
 const LinksLayout = () => {
   return (
@@ -50,8 +51,16 @@ const LinksLayout = () => {
           boxShadow={"1px 1px 3px 0px rgba(157, 178, 217, 1)"}
           bg="#EDFCF3"
         >
-          <SpotifyLayout />
+          <CodeforcesLayout />
         </GridItem>
+        {/* <GridItem
+          colSpan={2}
+          borderRadius={"1.5rem"}
+          boxShadow={"1px 1px 3px 0px rgba(157, 178, 217, 1)"}
+          bg="#EDFCF3"
+        >
+          <SpotifyLayout />
+        </GridItem> */}
         <GridItem
           rowSpan={1}
           colSpan={2}

@@ -41,7 +41,7 @@ const GithubLayout = () => {
       setUserData(userData);
       setLoading(false);
     } catch (err) {
-      console.error("Error fetching Twitter profile:", err);
+      console.error("Error fetching Github profile:", err);
     }
   };
 
